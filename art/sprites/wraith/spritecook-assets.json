@@ -1,0 +1,18 @@
+{
+  "assets": [
+    {
+      "asset_id": "1d1c94be-895e-4dbe-97cd-47d93da48802",
+      "label": "FIREWALL Wraith v2 techno Tron idle (SpriteCook)",
+      "job_id": "350c9f50-d112-4ee3-b059-26b2d8b95cfe",
+      "model": "gemini-nano-banana-2.1",
+      "style_asset_ids": ["33b8ada8-8804-4a56-86b6-bf6259878878"],
+      "created_at": "2026-11-02T05:05:21Z",
+      "files": [
+        { "path": "wraith_spritecook_v2_ref.png", "sha12": "94f9001f194e", "source": "sprite_url (pixel), 240x240" },
+        { "path": "wraith_spritecook_v2_ref_3x.png", "sha12": "f34f72f6e44d", "source": "local 3x nearest-neighbour upscale" },
+        { "path": "wraith_spritecook_v2_64x96.png", "sha12": "dd4f2d8ce738", "source": "local nearest-neighbour downscale, see NOTES.md" },
+        { "path": "wraith_spritecook_v2_raw.jpg", "sha12": "e547f79e1a81", "source": "raw_url (pre-pixel Gemini output)" }
+      ]
+    }
+  ]
+}

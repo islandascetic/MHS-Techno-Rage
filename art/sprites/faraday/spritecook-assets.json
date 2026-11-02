@@ -1,0 +1,30 @@
+{
+  "assets": [
+    {
+      "asset_id": "36398dcd-8c64-40be-ae62-dc2046cec373",
+      "label": "FIREWALL Faraday base idle v1 (SpriteCook ref)",
+      "job_id": "5b6ffcee-1a4a-4f29-ba53-a8393c425dd2",
+      "model": "gemini-nano-banana-2.1",
+      "created_at": "2026-11-02T04:47:24Z",
+      "files": [
+        { "path": "faraday_spritecook_ref.png", "sha12": "c018ce67c44f", "source": "sprite_url (pixel)" },
+        { "path": "faraday_spritecook_ref_8x.png", "sha12": "f0cc75c81ad7", "source": "local 8x nearest-neighbour upscale" },
+        { "path": "faraday_spritecook_64x96.png", "sha12": "49e217352e93", "source": "local nearest-neighbour downscale, see NOTES.md" },
+        { "path": "faraday_spritecook_raw.jpg", "sha12": "c3148c031adc", "source": "raw_url (pre-pixel Gemini output)" }
+      ]
+    },
+    {
+      "asset_id": "33b8ada8-8804-4a56-86b6-bf6259878878",
+      "label": "FIREWALL Faraday v2 techno Tron idle (SpriteCook)",
+      "job_id": "e62c6794-1473-4767-a83e-1c3b2f1ec7ed",
+      "model": "gemini-nano-banana-2.1",
+      "created_at": "2026-11-02T04:59:33Z",
+      "files": [
+        { "path": "faraday_spritecook_v2_ref.png", "sha12": "df5616369980", "source": "sprite_url (pixel), 204x204" },
+        { "path": "faraday_spritecook_v2_ref_4x.png", "sha12": "97c02072fc59", "source": "local 4x nearest-neighbour upscale" },
+        { "path": "faraday_spritecook_v2_64x96.png", "sha12": "2fe4ae1ab435", "source": "local nearest-neighbour downscale, see NOTES.md" },
+        { "path": "faraday_spritecook_v2_raw.jpg", "sha12": "66b8047f3686", "source": "raw_url (pre-pixel Gemini output)" }
+      ]
+    }
+  ]
+}
