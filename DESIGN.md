@@ -272,6 +272,64 @@ Finale roles: Atlas leads to the door, Lambda proves it open, Echo jams the sign
 Wraith exposes the lieutenants' weakness, Remedy carries the cure, Iris names ROOT,
 Lumen is the one it listens to, Faraday holds the gate.
 
+## Battle system
+
+Turn-based. Four active heroes, four in reserve, against one to four enemies
+(bosses count as two). Visible turn timeline at the top. On a hero's turn: Attack,
+Skill, Item, Defend, plus Escalate when the gauge is full. Enemies are targeted by
+tapping them.
+
+- **Cycles** (Boost). Every hero gains one Cycle per turn, max five. Spend one to
+  three on an action to amplify it (more hits, more healing, longer buffs). Defend
+  banks Cycles. Lambda's Compute consumes all Cycles instead of amplifying.
+- **Shields and Crash** (Break). Each enemy shows a shield count (1–6) and two or
+  three weaknesses. Hitting a weakness removes one shield. At zero the enemy
+  **Crashes**: loses its next turn, takes bonus damage, and reserve heroes get
+  Support Attacks. Shields reset higher after a Crash. Weaknesses show as question
+  marks until revealed by Iris's Index (or her world-condition unlocks).
+- **Six damage types.**
+
+  | Type | Flavour | Who leans on it |
+  |---|---|---|
+  | Force | Brute compute, physical hits | Faraday, Atlas's summons |
+  | Shock | Electrical surge | Wraith, Echo |
+  | Burn | Thermal overload | Iris, Lambda's spells |
+  | Freeze | Process halt | Iris, Remedy's Quarantine |
+  | Light | Clean signal; extra damage to the Patched | Lumen |
+  | Null | Deletion, the virus's own type | ROOT, Lieutenants, late Lambda |
+
+- **Reserve swapping** (Mana Khemia). Tap a reserve portrait on your turn to swap
+  for free; the incoming hero acts next round. **Support Guard**: once per round a
+  reserve hero can take a hit meant for an active ally. **Support Attack**: when an
+  enemy Crashes, every reserve hero gets a free follow-up strike. Escalate gauges
+  fill on the bench through support moves.
+- **Encounters are visible, never random.** Fragments roam the field as visible
+  glitches; walk into or tap one to fight. Ambushes from behind cost the party its
+  first turn. Faraday's unlock allows retreat.
+- **Losing.** A party wipe returns to the hub keeping everything except the current
+  beat's progress. Fallen heroes stay down per Lumen's world condition.
+
+Why it hangs together: Cycles reward patience, Shields reward knowledge, swapping
+rewards the whole cast, Escalate rewards playing in character. All four are visible
+numbers, which is what Lambda's Compute targets.
+
+Horizon: a state machine, a HUD, and persistent flags. Cap enemies at four.
+
+## Format: 3D with imported 2D sprites
+
+The project is a **3D scene** (empty 3D template, or an adventure starter for its
+player and camera scaffolding). Heroes, Fragments, and UI are imported 2D sprites on
+camera-facing quads; environments are 3D dioramas built with the Assistant and the
+marketplace. This is the only route to the HD-2D look in Horizon.
+
+Dependency: the billboard sprite test must pass (sprite-sheet animation by script;
+per-frame texture swap as fallback). If both fail, reconsider the 2D template or
+generated humanoid meshes with a painterly look.
+
+Build rules: sprite materials with no texture smoothing (crisp pixels); fixed camera
+about 30° looking down, never free-rotating; one hero sprite height (about 1.6
+units) decided early and every set built against it.
+
 ## Scope for first release
 
 Prologue + the Sandbox + all eight chapter ones + the hub. Later chapters, Crossed
@@ -294,12 +352,10 @@ feels complete.
 
 - World layout: one continuous map with regions, or hub with portals; region count
   at launch.
-- Combat rules: Boost/Break equivalents, random vs visible encounters, and whether
-  to adopt Mana Khemia-style reserve swapping (support attack / support guard) so
-  all eight matter in every fight.
 - Names for the hub, the four lieutenants, and the world's regions.
 - Hero pronouns (currently mixed in prose, unconfirmed).
-- Which starter game to remix (adventure is the closest match).
+- Empty 3D template vs adventure starter (empty 3D recommended).
+- Result of the billboard sprite test.
 
 ## Horizon notes
 
