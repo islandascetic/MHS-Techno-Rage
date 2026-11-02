@@ -341,6 +341,8 @@ feels complete.
 - **HD-2D**: pixel-sprite characters on 3D diorama environments; strong warm key
   light, heavy bloom, deep shadows, saturated accents, fog for depth. Tilt-shift
   depth of field may not be available in Horizon; fog and framing stand in.
+- **Character looks** are specified in [art/CHARACTERS.md](art/CHARACTERS.md):
+  shared style block, per-hero sheets, palettes, and ChatGPT prompts.
 - **Sprites are imported** (the creator has a working import path via GitHub).
   Characters are flat camera-facing quads with sprite-sheet animation by script
   (UV-offset first; per-frame texture swap as fallback). Test prompt pending.
