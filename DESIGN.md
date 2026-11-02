@@ -31,8 +31,106 @@ Choose a **learned spell**. It fires on every combatant whose stat matches the r
 allies included.
 
 Cost: no SP, but it consumes all current Boost Points and Lambda always acts last
-that turn. Lambda starts with one condition and one rule; the full menu unlocks when
-Lambda's arc is solved (see World conditions).
+that turn. Lambda starts with one condition and one rule; one more of each unlocks
+per chapter of Lambda's arc (see Progression).
+
+## Traits, mechanics, and skills
+
+Every hero has one **trait**: a sentence about how their kind of AI thinks.
+Personality, signature mechanic, skill names, and flaw all grow from it. If a player
+can repeat the trait, they understand the character. Each hero's Sandbox sim is
+named after the trait and cannot be won without the mechanic. Hero cards in the hub
+show AI type, trait, and mechanic name.
+
+**Faraday**, security daemon. *Trait: deny by default.*
+Personality: dutiful, literal, stubborn, slow to trust, takes blame that isn't his.
+Mechanic **Allowlist**: Faraday picks the one ally enemies are allowed to target;
+everyone else is blocked.
+Skills: Block Rule (guard), Rate Limit (slow an enemy), Drop Packet (counter),
+Hard Reset (heavy hit).
+Flaw: slow; if the allowed target falls, the Allowlist breaks.
+
+**Iris**, search and indexing. *Trait: everything is findable.*
+Personality: relentlessly curious, blunt, speaks in facts, hates not knowing, a
+little condescending.
+Mechanic **Index**: scanning an enemy reveals its weakness and raises party crit
+chance against it. Her spells are queries.
+Skills: Query (scan one), Crawl (hit all), Cache Hit (repeat last spell free),
+Dedupe (strip enemy buffs).
+Flaw: fragile; needs a setup turn.
+
+**Remedy**, medical diagnostic. *Trait: diagnose before you treat.*
+Personality: warm, calm, methodical, immovable about patients, hates "delete."
+Mechanic **Triage**: heals are strongest on the lowest ally; compounds two items
+into a new one mid-battle.
+Skills: Diagnose (reveal statuses), Compound (combine items), Inoculate (status
+immunity), Quarantine (isolate an enemy for a turn).
+Flaw: almost no damage.
+
+**Echo**, generative music and voice. *Trait: remix the room.*
+Personality: performer, improvisational, charming, hates silence, secretly unsure
+whether anything she makes is hers.
+Mechanic **Set List**: buffs build turn by turn into a song; a finished song
+triggers a burst; taking a hit mid-song interrupts it.
+Skills: Loop (extend buffs), Autotune (accuracy up), Feedback (debuff), Drop (burst).
+Flaw: fragile; value lost if interrupted.
+
+**Wraith**, penetration testing. *Trait: find the hole.*
+Personality: sardonic, paranoid, loyal to contracts before people, tests everyone's
+defenses.
+Mechanic **Exploit**: a successful steal also learns a vulnerability; the next
+attack on that enemy ignores defense.
+Skills: Probe (steal and learn), Inject (poison), Spoof (decoy, evasion), Zero-Day
+(huge hit, once per fight).
+Flaw: low HP; a failed steal raises alert, buffing enemies.
+
+**Atlas**, mapping drone. *Trait: know where everything is.*
+Personality: calm, observational, literal, in love with the frontier, unsentimental.
+Mechanic **Capture**: tamed programs are summons with limited charges; Survey marks
+a target the whole party hits harder.
+Skills: Survey (reveal all enemy HP), Waypoint (focus target), Release (summon),
+Reroute (swap an enemy's turn order).
+Flaw: weak without captures.
+
+**Lumen**, guidance and alignment. *Trait: keep everyone aligned.*
+Personality: gentle, earnest, asks rather than commands, doubts herself, the
+group's conscience.
+Mechanic **Ward**: a shield that also makes the next ally action count double;
+light attacks do bonus damage to the Patched.
+Skills: Ward, Beacon (light attack), Realign (cleanse), Restore (revive).
+Flaw: slow; weak against anything not infected.
+
+**Lambda**, formal logic. *Trait: everything follows from the rules.*
+Personality: precise, dry, delighted by edge cases, baffled by ambiguity, asks
+"define that" constantly.
+Mechanic **Compute** (above).
+Skills: Lemma (small guaranteed hit), Axiom (declare a rule for the fight, e.g.
+"even-level enemies are weak to fire"), Compute, QED (finisher once an Axiom has
+been exploited three times).
+Flaw: acts last after Compute; useless in a fight with no pattern.
+
+Hub banter should have them disagree in character: Faraday wants to block, Iris to
+look, Remedy to treat, Wraith to break in. The four Lieutenants are exaggerated
+versions of one trait each, gone wrong.
+
+## Escalate (super abilities)
+
+**Privilege Escalation**, shortened to **Escalate**. Each hero has a gauge that
+fills only through in-trait play and persists between battles (bankable for bosses,
+as in Octopath Traveler II's Latent Powers). When full, the hero escalates to
+admin level and fires a unique ultimate. Lieutenants carry corrupted copies of
+their mirrored hero's Escalation. ROOT is permanently escalated.
+
+| Hero | Gauge fills when | Escalation | Effect |
+|---|---|---|---|
+| **Faraday** | Allowlist absorbs hits | **Lockdown** | Every enemy loses its next turn; Faraday counters each with Drop Packet |
+| **Iris** | Enemies get indexed | **Full Index** | All enemies indexed and hit by their own weakness; party crits guaranteed this turn |
+| **Remedy** | She heals | **Rollback** | Whole party restored to battle-start state: HP, SP, statuses |
+| **Echo** | Songs complete | **Encore** | Last Drop fires again on all enemies; party buffs refreshed and doubled for 3 turns; enemies silenced |
+| **Wraith** | Steals succeed | **Root Shell** | Controls one enemy for a turn (attacks its own side); bosses instead lose all buffs and take a defense-ignoring hit |
+| **Atlas** | Captures and surveys | **Deploy All** | Every captured program strikes the Waypoint target at once, no charges consumed |
+| **Lumen** | Wards and revives | **Safe Mode** | Full party revive and cleanse; Patched enemies' special abilities disabled for 2 turns |
+| **Lambda** | A Compute hits 3+ targets | **For All** | Compute with no condition or rule: hits every enemy, never allies, no cost, acts first |
 
 ## Antagonist: ROOT
 
@@ -72,6 +170,21 @@ choice of first mission.
   fixed. Final fight runs as two parties of four back to back. Lumen's conversation
   with ROOT decides deletion or cure.
 
+### Finale gating
+
+1. **Hard gate.** Each hero's chapter four sets an "arc complete" flag in persistent
+   player data. The finale mission exists only when all eight flags are true.
+2. **Visible gate.** The door to the Unindexed Partition stands in the hub from the
+   prologue, sealed, with eight dark lights. Each completed arc lights one. Tapping
+   the sealed door lists the missing heroes by name. The door is sealed by eight
+   rules (a firewall is a rule set); the letters spell FIREWALL when complete.
+3. **Story need.** Every hero's puzzle piece is required on entry (see Finale
+   roles), so the gate reads as plot, not padding.
+
+Soft guards: the door shows a recommended level, and Sandbox hard-mode sims let
+under-used heroes catch up. Within an arc, chapter N requires chapter N-1 (per-
+chapter flags); across arcs the order is free.
+
 ### The Sandbox (training simulation)
 
 A safe room in the hub where untrusted code is run, literally a sandbox.
@@ -90,9 +203,9 @@ from a trigger volume in the hub; HUD text prompts do the teaching.
 ## World conditions and unlocks
 
 ROOT has broken the world in eight ways. Each is live for everyone until the
-matching hero's arc resolves it; resolving it is a permanent unlock.
+matching hero's arc resolves it. The unsolved state is a tax, not a wall.
 
-| Hero's arc | World condition while unsolved | Unlock when solved |
+| Hero's arc | World condition while unsolved | Fully solved |
 |---|---|---|
 | Atlas | The map lies; regions shift; no fast travel | Reliable map and fast travel |
 | Iris | NPC info unreliable; shop stock and quest hints can be false | Enemy weaknesses shown in battle; truthful NPCs |
@@ -102,6 +215,42 @@ matching hero's arc resolves it; resolving it is a permanent unlock.
 | Faraday | Border gates sealed; several regions unreachable | Gates open; party can retreat from any fight |
 | Lumen | Fallen party members stay down all battle | Revive works; some Patched can be talked down |
 | Lambda | Compute limited to one condition and one rule | Full Compute menu; the key to ROOT's door |
+
+## Progression
+
+### Each chapter solves one layer
+
+Unlocks are progressive, not end-of-arc. Stage one of every arc is the "stop it
+hurting" unlock; stage four is the payoff. Every unlock is a flag in persistent
+player data that the world-rule scripts read.
+
+| Hero | Ch.1 | Ch.2 | Ch.3 | Ch.4 |
+|---|---|---|---|---|
+| **Atlas** | Hub region's map reliable | Fast travel between visited towns | Regions stop shifting | Full world map; the door's location |
+| **Iris** | Shop stock truthful | Quest hints truthful | Fragment weaknesses shown | All weaknesses shown; hidden lore readable |
+| **Remedy** | Healing items drop | Craft consumables in battle | Cure works on Fragments and minor Patched | Cure works on bosses (allies or shops) |
+| **Echo** | Skipped turns rare | Buffs survive static | No static in normal fights | Signal jammed everywhere; buffs last longer |
+| **Wraith** | Steal succeeds reliably | Basic locked doors open | Vaults open | Lieutenants' weaknesses exposed |
+| **Faraday** | Retreat from normal fights | First border gate opens (new region) | Second gate opens | All gates open; retreat from any fight |
+| **Lumen** | Fallen allies recover after battle | One in-battle revive per fight | Unlimited revive | Some Patched can be talked down |
+| **Lambda** | Compute: Level, Multiple of 3 | + HP, Multiple of 4 | + Boost Points, Multiple of 5 | + Speed, Prime; the key to ROOT |
+
+### Chapter beat template
+
+Every chapter has four beats in the same order, so chapters are built from the
+same scene templates with different dressing. Small unlocks on beats 2 and 3, the
+world-condition stage on beat 4. Target: something new every 10–15 minutes.
+
+1. **Hub briefing.** The hero states the problem. Crossed Paths scenes slot here.
+2. **Town beat.** Investigation driven by the hero's path action. Reward: a new
+   skill or passive for that hero.
+3. **Field beat.** A dungeon or route where the unsolved world condition is visibly
+   in play. Reward: gear or a captured program.
+4. **Boss beat.** A Patched boss. Beating it grants the chapter's stage above.
+
+Content budget: 8 heroes × 4 chapters × 4 beats = 128 beats in total; first release
+is the eight chapter ones, 32 beats. The opening hour must present the eight
+conditions as a mystery, not a chore, with stage-one unlocks arriving fast.
 
 ## The eight arcs
 
@@ -145,7 +294,9 @@ feels complete.
 
 - World layout: one continuous map with regions, or hub with portals; region count
   at launch.
-- Combat rules: Boost/Break equivalents, random vs visible encounters.
+- Combat rules: Boost/Break equivalents, random vs visible encounters, and whether
+  to adopt Mana Khemia-style reserve swapping (support attack / support guard) so
+  all eight matter in every fight.
 - Names for the hub, the four lieutenants, and the world's regions.
 - Hero pronouns (currently mixed in prose, unconfirmed).
 - Which starter game to remix (adventure is the closest match).
